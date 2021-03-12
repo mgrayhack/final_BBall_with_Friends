@@ -3,14 +3,15 @@
 
 <form action="/wager/insert_bet">
   <label for="browser_input">Winning Team</label>
-  <input id="browser_input" type="text" name="input_winner" placeholder="Enter a the winning team...">
+  <input id="browser_input" type="text" name="input_selected_team" placeholder="Enter team you want to bet on...">
 
  <label for="browser_input">Losing Team</label>
-  <input id="browser_input" type="text" name="input losing" placeholder="Enter a the Losing team...">
+  <input id="browser_input" type="text" name="input_opponent" placeholder="Enter the opponent...">
 
   <label for="browser_user_id">Spread</label>
-  <input id="browser_user_id" type="text" name="spread" placeholder="Enter 0 for Moneyline and '-' # if your winning  team is favored">
-  #should this be a interger 
+  <input style="width:500px" id="browser_user_id" type="text" name="spread" placeholder="Enter 0 for Moneyline and '-' in front of the # if the selected  team is favored">
+  <br>
+  #should this be a interger and how do I make this longer 
 
   <button>Make Bet</button>
 </form>

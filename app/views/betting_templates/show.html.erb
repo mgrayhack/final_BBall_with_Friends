@@ -1,1 +1,20 @@
-hi
+<h1> Confirm Your Bet </h1>
+
+
+</form><form action="/wager/add">
+  <label for="browser_input">I am betting on..</label>
+  <br> <input id="browser_input" type="text" name="final_selected_team" value =  "<%=@input_selected_team%>">
+  
+  <hr>
+
+ <label for="browser_input">Opponent </label>
+ <br><input id="browser_input" type="text" name="final_opponent" value =  "<%=@input_opponent%>">
+
+  <hr>
+  <label for="browser_user_id">Spread   </label>
+ <br><input id="browser_input" type="integer" name="final_spread" value =  "<%=@spread%>">
+<hr>
+  <button>Finalize</button>
+</form>
+
+<a href = "/wager"> Go back </a>
