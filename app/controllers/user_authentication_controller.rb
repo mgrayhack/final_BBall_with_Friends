@@ -6,4 +6,7 @@ def index
 
     render({ :template => "user_authentication/index.html.erb" })
   end
+
+  #def start_cookie
+
 end
