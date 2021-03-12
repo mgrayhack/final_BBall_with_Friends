@@ -16,8 +16,13 @@ request["x-rapidapi-key"] = '3785af66e1mshc3f5c146b6f27c3p1ebaf6jsn23ad80ed1540'
 request["x-rapidapi-host"] = 'sportspage-feeds.p.rapidapi.com'
 
 @response = http.request(request)
-@response.read_body
+
+ @data = JSON.parse(@response.read_body)
+@data_first = @data.fetch("results")
+
  
+
+
 
 
     render({ :template => "games_templates/index.html.erb" })
