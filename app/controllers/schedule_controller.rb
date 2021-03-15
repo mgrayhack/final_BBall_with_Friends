@@ -12,10 +12,10 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 
 request = Net::HTTP::Get.new(@url)
-request["x-rapidapi-key"] =# '3785af66e1mshc3f5c146b6f27c3p1ebaf6jsn23ad80ed1540'
+request["x-rapidapi-key"] = ENV.fetch("Sports_KEY")
 request["x-rapidapi-host"] = 'sportspage-feeds.p.rapidapi.com'
 
-@response = http.request(request)
+#@response = http.request(request)
 
  @data = JSON.parse(@response.read_body)
 @data_first = @data.fetch("results")

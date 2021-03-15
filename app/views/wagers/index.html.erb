@@ -1,0 +1,182 @@
+<div>
+  <div>
+    <h1>
+      List of all wagers
+    </h1>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <div>
+    <h2>
+      Add a new wager
+    </h2>
+
+    <form action="/insert_wager" method="post">
+      <div>
+        <label for="selected_team_box">
+          Selected team
+        </label>
+
+        <input type="text" id="selected_team_box" name="query_selected_team">
+      </div>
+
+      <div>
+        <label for="opponent_box">
+          Opponent
+        </label>
+
+        <input type="text" id="opponent_box" name="query_opponent">
+      </div>
+
+      <div>
+        <label for="spread_box">
+          Spread
+        </label>
+
+        <input type="text" id="spread_box" name="query_spread">
+      </div>
+
+      <div>
+        <label for="bet_user_id_box">
+          Bet user
+        </label>
+
+        <input type="text" id="bet_user_id_box" name="query_bet_user_id">
+      </div>
+
+      <div>
+        <label for="taker_of_bet_id_box">
+          Taker of bet
+        </label>
+
+        <input type="text" id="taker_of_bet_id_box" name="query_taker_of_bet_id">
+      </div>
+
+      <div>
+        <label for="result_box">
+          Result
+        </label>
+
+        <input type="text" id="result_box" name="query_result">
+      </div>
+
+      <div>
+        <label for="game_id_box">
+          Game
+        </label>
+
+        <input type="text" id="game_id_box" name="query_game_id">
+      </div>
+
+      <button>
+        Create wager
+      </button>
+    </form>
+  </div>
+</div>
+
+<hr>
+<div>
+  <div>
+    <table>
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Selected team
+        </th>
+
+        <th>
+          Opponent
+        </th>
+
+        <th>
+          Spread
+        </th>
+
+        <th>
+          Bet user
+        </th>
+
+        <th>
+          Taker of bet
+        </th>
+
+        <th>
+          Result
+        </th>
+
+        <th>
+          Game
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @list_of_wagers.each do |a_wager| %>
+      <tr>
+        <td>
+          <%= a_wager.id %>
+        </td>
+
+        <td>
+          <%= a_wager.selected_team %>
+        </td>
+
+        <td>
+          <%= a_wager.opponent %>
+        </td>
+
+        <td>
+          <%= a_wager.spread %>
+        </td>
+
+        <td>
+          <%= a_wager.bet_user_id %>
+        </td>
+
+        <td>
+          <%= a_wager.taker_of_bet_id %>
+        </td>
+
+        <td>
+          <%= a_wager.result %>
+        </td>
+
+        <td>
+          <%= a_wager.game_id %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(a_wager.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(a_wager.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/wagers/<%= a_wager.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
+
+<hr>

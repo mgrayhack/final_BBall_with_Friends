@@ -10,6 +10,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 2021_03_15_165055) do
+
+  create_table "games", force: :cascade do |t|
+    t.datetime "date"
+    t.integer "home_team_id"
+    t.integer "away_team_id"
+    t.integer "spread"
+    t.string "result"
+    t.integer "wagers_count"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "standings", force: :cascade do |t|
+    t.integer "player_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
+    t.integer "wins"
+    t.integer "losses"
+    t.string "username"
+    t.integer "wagers_count"
+    t.integer "taker_count"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "wagers", force: :cascade do |t|
+    t.string "selected_team"
+    t.string "opponent"
+    t.integer "spread"
+    t.integer "bet_user_id"
+    t.integer "taker_of_bet_id"
+    t.string "result"
+    t.integer "game_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
 end

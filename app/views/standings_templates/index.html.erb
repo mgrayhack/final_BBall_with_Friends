@@ -1,1 +1,58 @@
 <h1> Here are the Standings </h1>
+ <table border="1">
+      <tr>
+      <th>
+          Ranking
+        </th>
+        <th>
+          Username
+        </th>
+
+        <th>
+          Wins
+        </th>
+
+        <th>
+          Losses
+        </th>
+
+        <th>
+          Win Percentage
+        </th>
+
+        <th>
+        </th>
+
+      </tr>
+      <% place =  0 %>
+<% @list_of_Users.each do |user| %>
+ 
+  <tr>
+  <td>
+      <%= place = place + 1%>
+    </td>
+
+    <td>
+      <%= user.username %>
+    </td>
+
+    <td>
+      <%= user.wins %>
+    </td>
+
+    <td>
+      <%= user.losses %>
+    </td>
+       <td>
+      <%= user.losses %>
+    </td>
+  </tr>
+  
+  <% end %>
+</table>
+      
+    </table>
+  </div>
+</div>
+
+<hr>

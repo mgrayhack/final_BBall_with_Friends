@@ -1,5 +1,38 @@
  <%require "date" %> 
 <h1>Schedule of Games for 
- <%=Date.today.day%> </h1>
+ <%=Date.today%> </h1>
 
- <%= @data_first%> 
+ <p>No live betting please chose game that hasn't started </p>
+
+ 
+  <div>
+    <table>
+      <tr>
+        <th>
+         Game
+        </th>
+
+        <th>
+          Current Status
+        </th>
+
+      <th>
+        </th>
+      </tr>
+
+      <% @data_first.each do |event|%> 
+      <tr>
+        <td>
+          <%= event.fetch("summary") %>
+        </td>
+        <td>
+          <%= event.fetch("status") %>
+        </td>
+      
+
+        
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>
