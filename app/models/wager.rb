@@ -22,4 +22,8 @@ class Wager < ApplicationRecord
     return User.where({ :id => bet_user_id }).at(0)
   end
 
+   def taker
+    return User.where({ :id => taker_of_bet_id }).at(0)
+  end
+
 end

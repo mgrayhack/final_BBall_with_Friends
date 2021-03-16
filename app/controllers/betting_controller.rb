@@ -12,10 +12,22 @@ class BettingController < ApplicationController
     render({ :template => "betting_templates/index.html.erb" })
   end
   def all_bets
+    require "date"
      matching_wagers = Wager.all
-
-    @list_of_wagers = matching_wagers.order({ :created_at => :desc })
-
+    @lists_of_wagers = matching_wagers.order({ :created_at => :desc })
+      @list_of_wagers =Array.new
+ @lists_of_wagers.each do |event|
+      if event.taker_of_bet_id == nil
+        @list_of_wagers.push(event)
+      end
+    end
+    @taken_bets = Wager.all
+    @taken_bets_list =Array.new
+    @taken_bets.each do |event|
+      if event.taker_of_bet_id != nil
+        @taken_bets_list.push(event)
+      end
+    end
 
     render({ :template => "betting_templates/all.html.erb" })
   end
@@ -39,6 +51,19 @@ def create
       redirect_to("/wager/all", { :notice => "Wager failed to create successfully." })
     end
   
+  end
+  def taken
+    the_id = params.fetch("path_id")
+    the_wager = Wager.where({ :id => the_id }).at(0)
+
+
+    the_wager.taker_of_bet_id =  @current_user.id
+
+
+      the_wager.save
+     
+      redirect_to("/wager/all")
+    
   end
   
 

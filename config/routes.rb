@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   
   # UPDATE
   
-  post("/modify_wager/:path_id", { :controller => "wagers", :action => "update" })
+  #post("/modify_wager/:path_id", { :controller => "wagers", :action => "update" })
   
   # DELETE
   get("/delete_wager/:path_id", { :controller => "wagers", :action => "destroy" })
@@ -90,6 +90,8 @@ Rails.application.routes.draw do
  get("/wager/add", { :controller => "betting", :action => "create" })
 
   get("/wager/all", { :controller => "betting", :action => "all_bets" })
+   get("/modify_wager/:path_id", { :controller => "betting", :action => "taken" })
+
 
  
 

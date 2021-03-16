@@ -1,6 +1,11 @@
 <h1>Every Bet</h1>
 
-<p> Feel free to take the otherside of your friend's bet </p>
+<p> Instructions </p>
+<ul >
+   <li>Feel free to take the otherside of your friend's bet
+</li>
+ <li> All bets are final</li>      
+<li> If the game has not started, you may "theoretically " cancel your bet by taking the other side of your own bet but it will count in both your win and loss column</li>   
 
 
 
@@ -35,11 +40,53 @@
     </td>
 
     <td>
-      <a href="/wager">
-        Take the other side
-      </a>
+ <form action="/modify_wager/<%=bet.id%>">  
+      </a><input id="browser_input" type="hidden" type="integer" name="id_wager" value =  "<%=bet.id%>">
+      <button type = "submit"> Take the other side </button>
+      </form>
+        
     </td>
   </tr>
   
   <% end %>
 </table>
+<hr>
+<h2>Bets Taken<h2>
+
+<table border="1">
+  <tr>
+    <th>Bettor</th>
+    <th>Team Picked</th>
+    <th>Opponent</th>
+    <th>Spread</th>
+    <th>Who took the Otherside of the Bet</th>
+    
+  </tr>
+
+  <% @taken_bets_list.each do |bet| %>
+  <tr>
+    <td>
+      <%=bet.bettor.username %>
+    </td>
+
+    <td>
+      <%=bet.selected_team %>
+    </td>
+
+    <td>
+      <%=bet.opponent %>
+    </td>
+
+    <td>
+      <%=bet.spread %>
+    </td>
+
+    <td>
+  <%=bet.taker.username %>
+        
+    </td>
+  </tr>
+  
+  <% end %>
+</table>
+
