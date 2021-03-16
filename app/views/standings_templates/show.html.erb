@@ -46,3 +46,89 @@
       
     </dl>
   </div>
+<h2>Bets Created:<h2>
+  <table border="1">
+  <tr>
+    
+    <th>Team Picked</th>
+    <th>Opponent</th>
+    <th>Spread</th>
+    <th>Won</th>
+    
+    
+  </tr>
+
+  <% @matching_bets.each do |bet| %>
+  <tr>
+    
+    <td>
+      <%=bet.selected_team %>
+    </td>
+
+    <td>
+      <%=bet.opponent %>
+    </td>
+
+    <td>
+      <%=bet.spread %>
+    </td>
+
+    <td>
+       <% if bet.result == "Yes"%>
+      <%= "Yes"%> 
+    <% elsif bet.result == "No" %>
+       <%= "No"%> 
+    <% else%>  
+    <%= "In Progress" %> 
+     <% end %> 
+    </td>
+    
+ 
+  
+  <% end %>
+</table>
+
+<h2>Bets Taken:<h2>
+  <table border="1">
+  <tr>
+    
+    <th><%= @the_user.username %>'s Team</th>
+    <th>Other Team</th>
+    <th>Spread</th>
+    <th>Won</th>
+    
+    
+  </tr>
+
+  <% @matching_taken.each do |bet| %>
+  <tr>
+    
+    <td>
+      <%=bet.opponent %>
+    </td>
+
+    <td>
+      <%=bet.selected_team %>
+    </td>
+
+    <td>
+      <%=bet.spread %>
+    </td>
+
+    <td>
+    <% if bet.result == "Yes"%>
+      <%= "No"%> 
+    <% elsif bet.result == "No" %>
+       <%= "Yes"%> 
+    <% else%>  
+    <%= "In Progress" %> 
+     <% end %>
+
+
+
+    </td>
+   
+ 
+  
+  <% end %>
+</table>

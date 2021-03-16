@@ -15,6 +15,10 @@ def index
 
     @the_user = matching_user.at(0)
 
+    @matching_bets = Wager.where({ :bet_user_id => the_id })
+
+    @matching_taken = Wager.where({ :taker_of_bet_id => the_id })
+
     render({ :template => "standings_templates/show.html.erb" })
   
   end
