@@ -65,6 +65,19 @@ def create
       redirect_to("/wager/all")
     
   end
+   def taken
+    the_id = params.fetch("path_id")
+    a_wager = Wager.where({ :id => the_id }).at(0)
+
+
+    a_wager.result =  @current_user.id
+
+
+      the_wager.save
+     
+      render({ :template => "betting_templates/results.html.erb" })
+    
+  end
   
 
 end

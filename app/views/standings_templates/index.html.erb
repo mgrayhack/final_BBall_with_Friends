@@ -5,6 +5,7 @@
           Ranking
         </th>
         <th>
+       
           Username
         </th>
 
@@ -33,7 +34,9 @@
     </td>
 
     <td>
-      <%= user.username %>
+    <a href="/users/<%= user.id %>">
+            <%= user.username %>
+          </a>
     </td>
 
     <td>

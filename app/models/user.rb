@@ -20,4 +20,11 @@ class User < ApplicationRecord
   has_many(:wagers, { :class_name => "Wager", :foreign_key => "bet_user_id", :dependent => :destroy })
   has_one(:standing, { :class_name => "Standing", :foreign_key => "player_id", :dependent => :destroy })
   has_many(:taker, { :class_name => "Wager", :foreign_key => "taker_of_bet_id" })
+   def creator
+    return Wager.where({ :bet_user_id  => id }).at(0)
+  end
+
+   def took_it
+    return Wager.where({ :taker_of_bet_id => id }).at(0)
+  end
 end

@@ -30,7 +30,7 @@ Rails.application.routes.draw do
   #post("/modify_wager/:path_id", { :controller => "wagers", :action => "update" })
   
   # DELETE
-  get("/delete_wager/:path_id", { :controller => "wagers", :action => "destroy" })
+  #get("/delete_wager/:path_id", { :controller => "wagers", :action => "destroy" })
 
   #------------------------------
 
@@ -84,6 +84,8 @@ Rails.application.routes.draw do
  get("/", { :controller => "user_authentication", :action => "index" })
 #compare recirds
  get("/standings", { :controller => "leaderboard", :action => "index" })
+ #user profile within standings
+ get("/users/:path_id", { :controller => "leaderboard", :action => "show" })
 #betting
  get("/wager", { :controller => "betting", :action => "index" })
  get("/wager/insert_bet", { :controller => "betting", :action => "show" })
@@ -91,6 +93,8 @@ Rails.application.routes.draw do
 
   get("/wager/all", { :controller => "betting", :action => "all_bets" })
    get("/modify_wager/:path_id", { :controller => "betting", :action => "taken" })
+
+   get("/result_wager/:path_id", { :controller => "betting", :action => "result" })
 
 
  

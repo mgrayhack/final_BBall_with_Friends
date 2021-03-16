@@ -8,6 +8,16 @@ def index
 
     render({ :template => "standings_templates/index.html.erb" })
   end
+  def show
+     the_id = params.fetch("path_id")
+
+    matching_user = User.where({ :id => the_id })
+
+    @the_user = matching_user.at(0)
+
+    render({ :template => "standings_templates/show.html.erb" })
+  
+  end
   def update
     the_id = params.fetch("path_id")
     the_standing = Standing.where({ :id => the_id }).at(0)
