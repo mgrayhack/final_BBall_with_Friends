@@ -18,12 +18,12 @@ Rails.application.routes.draw do
   # Routes for the Wager resource:
 
   # CREATE
-  post("/insert_wager", { :controller => "wagers", :action => "create" })
+  #post("/insert_wager", { :controller => "wagers", :action => "create" })
           
   # READ
-  get("/wagers", { :controller => "wagers", :action => "index" })
+  #get("/wagers", { :controller => "wagers", :action => "index" })
   
-  get("/wagers/:path_id", { :controller => "wagers", :action => "show" })
+  #get("/wagers/:path_id", { :controller => "wagers", :action => "show" })
   
   # UPDATE
   

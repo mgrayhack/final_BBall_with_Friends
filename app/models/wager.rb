@@ -18,4 +18,8 @@ class Wager < ApplicationRecord
   belongs_to(:bet_user, { :required => false, :class_name => "User", :foreign_key => "bet_user_id", :counter_cache => true })
   belongs_to(:taker_of_bet, { :required => false, :class_name => "User", :foreign_key => "taker_of_bet_id", :counter_cache => :taker_count })
 
+  def bettor
+    return User.where({ :id => bet_user_id }).at(0)
+  end
+
 end

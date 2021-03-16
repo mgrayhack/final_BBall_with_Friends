@@ -12,25 +12,34 @@ class BettingController < ApplicationController
     render({ :template => "betting_templates/index.html.erb" })
   end
   def all_bets
-     #@wager = Wager.all
+     matching_wagers = Wager.all
+
+    @list_of_wagers = matching_wagers.order({ :created_at => :desc })
 
 
     render({ :template => "betting_templates/all.html.erb" })
   end
-#def create
-    #user_id = session.fetch(:user_id)
+def create
+   wager = Wager.new
+    user_id = session.fetch(:user_id)
     
-    #final_selected_team = params.fetch("final_selected_team")
-  #final_opponent = params.fetch("final_opponent")
-  #spread = params.fetch("final_spread")
-    #wager = Wager.new
-    #wager.bet_user_id = user_id
-    #wager.selected_team= final_selected_team
-    #wager.opponent = final_opponent
-    #wager.spread = spread
-    #wager.save
-    #redirect_to("/wager/all")
-  #end
+    final_selected_team = params.fetch("final_selected_team")
+  final_opponent = params.fetch("final_opponent")
+  spread = params.fetch("final_spread")
+   
+    wager.bet_user_id = user_id
+    wager.selected_team= final_selected_team
+    wager.opponent = final_opponent
+    wager.spread = spread
+   
+    if wager.valid?
+      wager.save
+      redirect_to("/wager/all", { :notice => "Wager created successfully." })
+    else
+      redirect_to("/wager/all", { :notice => "Wager failed to create successfully." })
+    end
+  
+  end
   
 
 end
