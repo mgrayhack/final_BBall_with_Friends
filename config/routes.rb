@@ -87,8 +87,10 @@ Rails.application.routes.draw do
 
   get("/wager/all", { :controller => "betting", :action => "all_bets" })
    get("/modify_wager/:path_id", { :controller => "betting", :action => "taken" })
+  get("/result_wager", { :controller => "betting", :action => "to_end" })
 
    get("/result_wager/:path_id", { :controller => "betting", :action => "result" })
+
 
 
   # UPDATE

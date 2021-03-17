@@ -13,21 +13,23 @@ class BettingController < ApplicationController
   end
   def all_bets
     
-     matching_wagers = Wager.all
-    @lists_of_wagers = matching_wagers.order({ :created_at => :desc })
-      @list_of_wagers =Array.new
- @lists_of_wagers.each do |event|
-      if event.taker_of_bet_id == nil
-        @list_of_wagers.push(event)
-      end
-    end
-    @taken_bets = Wager.all
-    @taken_bets_list =Array.new
-    @taken_bets.each do |event|
-      if event.taker_of_bet_id != nil
-        @taken_bets_list.push(event)
-      end
-    end
+     matching_wagers = Wager.all.where(:taker_of_bet_id => nil).where(:result => nil)
+    @list_of_wagers = matching_wagers.order({ :created_at => :desc })
+    
+#       @list_of_wagers =Array.new
+#  @lists_of_wagers.each do |event|
+#       if event.taker_of_bet_id == nil
+#         @list_of_wagers.push(event)
+#       end
+#     end
+
+    @taken_bets_list = Wager.all.where.not(:taker_of_bet_id => nil).where(:result => nil)
+    # @taken_bets_list =Array.new
+    # @taken_bets.each do |event|
+    #   if event.taker_of_bet_id != nil
+    #     @taken_bets_list.push(event)
+    #   end
+    # end
 
     render({ :template => "betting_templates/all.html.erb" })
   end
@@ -89,7 +91,18 @@ def create
      
     
   end
-  
+   def to_end
+    
+      @finished_bets = Wager.all
+    @finished_bets_list =Array.new
+    @finished_bets.each do |event|
+      if event.result != nil
+        @finished_bets_list.push(event)
+      end
+      
+    end
+     render({ :template => "betting_templates/results.html.erb" })
+  end
 
 end
 

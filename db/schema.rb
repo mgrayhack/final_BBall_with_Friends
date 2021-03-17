@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2021_03_16_213224) do
     t.integer "game_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.date "date_of_game"
   end
 
 end

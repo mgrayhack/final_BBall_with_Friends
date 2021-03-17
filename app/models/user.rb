@@ -27,4 +27,15 @@ class User < ApplicationRecord
    def took_it
     return Wager.where({ :taker_of_bet_id => id }).at(0)
   end
+  def win_record
+    return Wager.where({ :result => self.id.to_s }).count
+  end
+   def loss_record
+    return Wager.where(:bet_user_id => self.id.to_s).or(Wager.where(:taker_of_bet_id => self.id.to_s)).count - win_record
+  end
+   def win_pert
+   (win_record.to_f/(win_record.to_f + loss_record.to_f)).to_f.round(3)
+  end
 end
+
+

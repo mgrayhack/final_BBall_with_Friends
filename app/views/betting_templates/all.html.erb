@@ -77,7 +77,7 @@
     <th>Opponent</th>
     <th>Spread</th>
     <th>Who took the Otherside of the Bet</th>
-    <th>Did the Bet Creator win?</th>
+    <th>Who won the bet?</th>
     
   </tr>
 
@@ -105,12 +105,12 @@
     </td>
     <td>
     <form action="/result_wager/<%=bet.id%>">  
-      </a><input id="browser_input" type="hidden" type="integer" name="winner" value =  "Yes">
-      <button type = "submit"> Yes </button>
+      </a><input id="browser_input" type="hidden" type="integer" name="winner" value =  "<%=bet.bettor.id%>">
+      <button type = "submit"> <%=bet.bettor.username %> </button>
       </form>
         <form action="/result_wager/<%=bet.id%>">  
-      </a><input id="browser_input" type="hidden" type="integer" name="winner" value =  "No">
-      <button type = "submit"> No </button>
+      </a><input id="browser_input" type="hidden" type="integer" name="winner" value =  "<%=bet.taker.id %>">
+      <button type = "submit"> <%=bet.taker.username %></button>
       </form>
        <form action="/result_wager/<%=bet.id%>">  
       </a><input id="browser_input" type="hidden" type="integer" name="winner" value =  "Push">

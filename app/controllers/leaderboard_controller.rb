@@ -7,6 +7,8 @@ def index
     @list_of_Users = matching_users.order({ :wins => :asc })
 
     render({ :template => "standings_templates/index.html.erb" })
+
+  
   end
   def show
      the_id = params.fetch("path_id")
