@@ -1,5 +1,5 @@
 <h1>Past Bets </h1>
-
+<p> Only the bet creator can undo a result</p>
 <hr>
 
 
@@ -48,14 +48,18 @@
     <% if bet.bet_winner != nil %>
   <%=bet.bet_winner.username %>
     <%else%>
+    <p> The bookie (<%=bet.bettor.username %> lost)</p>
   <%end%>
      
     </td>
     <td>
+    <% if @current_user.id == bet.bettor.id %>
  <form action="/update_wager/<%=bet.id%>">  
       </a><input id="browser_input" type="hidden" type="integer" name="winner" value =  "<%=bet.bettor.id%>">
       <button type = "submit"> Undo Result & Reinstate </button>
       </form>
+      <%else%>
+  <%end%>
  <%end%>
   </tr>
    </table>

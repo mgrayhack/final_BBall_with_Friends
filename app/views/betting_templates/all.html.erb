@@ -5,9 +5,8 @@
    <li>Feel free to take the otherside of your friend's bet
 </li>
  <li> All bets are final</li>      
-<li> If the game has not started, you may "theoretically " cancel your bet by taking the other side of your own bet but it will count in both your win and loss column</li>   
-<li> The creator of the bet is in charge of inputting the results: <br>1- If the creator of the bet won the bet, please click Yes <br>
-2- If that person loses, click No <br> 3- If it is a tie, click Push and the bet will be eliminated</li>   
+<li> If the game has not started, you may "theoretically " cancel your bet by selecting Push. This is frowned upon. </li>   
+<li> The creator of the bet is in charge of inputting the results, but the taker has the option as well. If it is a tie, click Push and the bet will be eliminated</li>   
 <li> If no one takes your bet, you should still record the result as it will count against your record </li>  
 
 
@@ -48,25 +47,31 @@
     </td>
 
     <td>
+     <% if @current_user.id != bet.bettor.id%>
  <form action="/modify_wager/<%=bet.id%>">  
       </a><input id="browser_input" type="hidden" type="integer" name="id_wager" value =  "<%=bet.id%>">
       <button type = "submit"> Take the other side </button>
       </form>
+      <%else%>
+      <%end%>
         
     </td>
     <td>
+     <% if @current_user.id == bet.bettor.id%>
  <form action="/result_wager/<%=bet.id%>">  
       </a><input id="browser_input" type="hidden" type="integer" name="winner" value =  "<%=bet.bettor.id%>">
       <button type = "submit"> Yes </button>
       </form>
         <form action="/result_wager/<%=bet.id%>">  
-      </a><input id="browser_input" type="hidden" type="integer" name="winner" value =  Lost">
+      </a><input id="browser_input" type="hidden" type="integer" name="winner" value =  "Lost">
       <button type = "submit"> No </button>
       </form>
        <form action="/result_wager/<%=bet.id%>">  
       </a><input id="browser_input" type="hidden" type="integer" name="winner" value =  "Push">
       <button type = "submit"> Push</button>
       </form>
+      <%else%>
+      <%end%>
     </td>
   </tr>
   
@@ -114,6 +119,7 @@
         
     </td>
     <td>
+     <% if @current_user.id == bet.bettor.id or bet.taker.username%>
     <form action="/result_wager/<%=bet.id%>">  
       </a><input id="browser_input" type="hidden" type="integer" name="winner" value =  "<%=bet.bettor.id%>">
       <button type = "submit"> <%=bet.bettor.username %> </button>
@@ -126,6 +132,8 @@
       </a><input id="browser_input" type="hidden" type="integer" name="winner" value =  "Push">
       <button type = "submit"> Push</button>
       </form>
+      <% else %>
+      <% end %>
     </td>
   </tr>
   
