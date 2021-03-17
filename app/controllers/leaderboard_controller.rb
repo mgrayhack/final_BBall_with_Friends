@@ -3,8 +3,12 @@ class LeaderboardController < ApplicationController
 
 def index
    matching_users = User.all
+    matching_users.each do |goal|
+      goal.wins = goal.win_record
+      goal.save
+    end
   #win
-    @list_of_Users = matching_users.order({ :wins => :asc })
+    @list_of_Users = matching_users.order({ :wins => :desc })
 
     render({ :template => "standings_templates/index.html.erb" })
 

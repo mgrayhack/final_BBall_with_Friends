@@ -3,6 +3,7 @@ class BettingController < ApplicationController
     @input_selected_team = params.fetch("input_selected_team")
    @input_opponent = params.fetch("input_opponent")
     @spread = params.fetch("spread")
+    @date_of_game = params.fetch("date_game")
 
    render({ :template => "betting_templates/show.html.erb" })
   end
@@ -36,15 +37,17 @@ class BettingController < ApplicationController
 def create
    wager = Wager.new
     user_id = session.fetch(:user_id)
-    
+    require "date"
     final_selected_team = params.fetch("final_selected_team")
   final_opponent = params.fetch("final_opponent")
   spread = params.fetch("final_spread")
+  date_game = params.fetch("final_date_game")
    
     wager.bet_user_id = user_id
     wager.selected_team= final_selected_team
     wager.opponent = final_opponent
     wager.spread = spread
+    wager.date_of_game = date_game
    
     if wager.valid?
       wager.save
@@ -102,6 +105,21 @@ def create
       
     end
      render({ :template => "betting_templates/results.html.erb" })
+  end
+   def update
+    the_id = params.fetch("path_id")
+    the_wager = Wager.where({ :id => the_id }).at(0)
+
+  
+    the_wager.result = nil
+   
+
+    if the_wager.valid?
+      the_wager.save
+      redirect_to("/wager/all", { :notice => "Wager updated successfully."} )
+    else
+      redirect_to("/result_wager", { :alert => "Wager failed to update successfully." })
+    end
   end
 
 end

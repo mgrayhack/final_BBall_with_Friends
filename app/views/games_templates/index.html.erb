@@ -2,11 +2,11 @@
 <h1>Schedule of Games for 
  <%=Date.today%> </h1>
 
- <p>No live betting please chose game that hasn't started </p>
+ <p>No live betting. Please chose game that is not in progress or final. </p>
 
  
   <div>
-    <table>
+    <table border =2>
       <tr>
         <th>
          Game
@@ -16,8 +16,7 @@
           Current Status
         </th>
 
-      <th>
-        </th>
+      
       </tr>
 
       <% @data_first.each do |event|%> 

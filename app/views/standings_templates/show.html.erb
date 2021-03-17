@@ -26,14 +26,14 @@
         Wins
       </dt>
       <dd>
-        <%= @the_user.wins %>
+        <%= @the_user.win_record %>
       </dd>
 
       <dt>
         Losses
       </dt>
       <dd>
-        <%= @the_user.losses %>
+        <%= @the_user.loss_record %>
       </dd>
 
       <dt>
@@ -53,6 +53,7 @@
     <th>Team Picked</th>
     <th>Opponent</th>
     <th>Spread</th>
+    <th>Date of Game</th>
     <th>Won</th>
     
     
@@ -71,6 +72,9 @@
 
     <td>
       <%=bet.spread %>
+    </td>
+    <td>
+      <%=bet.date_of_game %>
     </td>
 
     <td>

@@ -9,9 +9,10 @@
     <th>Team Picked</th>
     <th>Opponent</th>
     <th>Spread</th>
+    <th>Date of Game</th>
     <th>Who took the Otherside of the Bet</th>
     <th>Who won the bet?</th>
-    
+    <th>Was the result incorrect?</th>
   </tr>
 
   <% @finished_bets_list.each do |bet| %>
@@ -32,14 +33,29 @@
       <%=bet.spread %>
     </td>
 
+     <td>
+      <%=bet.date_of_game %>
+    </td>
+
     <td>
+    <% if bet.taker != nil %>
   <%=bet.taker.username %>
+  <%else%>
+  <%end%>
      
     </td>
     <td>
+    <% if bet.bet_winner != nil %>
   <%=bet.bet_winner.username %>
+    <%else%>
+  <%end%>
      
     </td>
+    <td>
+ <form action="/update_wager/<%=bet.id%>">  
+      </a><input id="browser_input" type="hidden" type="integer" name="winner" value =  "<%=bet.bettor.id%>">
+      <button type = "submit"> Undo Result & Reinstate </button>
+      </form>
  <%end%>
   </tr>
    </table>

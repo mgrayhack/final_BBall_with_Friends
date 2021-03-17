@@ -91,14 +91,15 @@ Rails.application.routes.draw do
 
    get("/result_wager/:path_id", { :controller => "betting", :action => "result" })
 
+get("/update_wager/:path_id",{ :controller => "betting", :action => "update" })
 
 
   # UPDATE
   
-  post("/modify_standing/:path_id", { :controller => "leaderboard", :action => "update" })
+ # post("/modify_standing/:path_id", { :controller => "leaderboard", :action => "update" })
   
   # DELETE
-  get("/delete_standing/:path_id", { :controller => "leaderboard", :action => "destroy" })
+  #get("/delete_standing/:path_id", { :controller => "leaderboard", :action => "destroy" })
  
 
  #post("/user_verify", { :controller => "user_authentication", :action => "start_cookie" })
