@@ -1,0 +1,45 @@
+<h1>Past Bets </h1>
+
+<hr>
+
+
+<table border="1">
+  <tr>
+    <th>Bettor</th>
+    <th>Team Picked</th>
+    <th>Opponent</th>
+    <th>Spread</th>
+    <th>Who took the Otherside of the Bet</th>
+    <th>Did the Bet Creator win?</th>
+    
+  </tr>
+
+  <% @finished_bets_list.each do |bet| %>
+  <tr>
+    <td>
+      <%=bet.bettor.username %>
+    </td>
+
+    <td>
+      <%=bet.selected_team %>
+    </td>
+
+    <td>
+      <%=bet.opponent %>
+    </td>
+
+    <td>
+      <%=bet.spread %>
+    </td>
+
+    <td>
+  <%=bet.taker.username %>
+     
+    </td>
+    <td>
+  <%=bet.result %>
+     
+    </td>
+ <%end%>
+  </tr>
+   </table>

@@ -12,7 +12,7 @@ class BettingController < ApplicationController
     render({ :template => "betting_templates/index.html.erb" })
   end
   def all_bets
-    require "date"
+    
      matching_wagers = Wager.all
     @lists_of_wagers = matching_wagers.order({ :created_at => :desc })
       @list_of_wagers =Array.new
@@ -65,17 +65,28 @@ def create
       redirect_to("/wager/all")
     
   end
-   def taken
+   def result
     the_id = params.fetch("path_id")
     a_wager = Wager.where({ :id => the_id }).at(0)
 
 
-    a_wager.result =  @current_user.id
-
-
-      the_wager.save
+    a_wager.result =  params.fetch("winner")
+    if a_wager.result == "Push"
+       a_wager.destroy
+        redirect_to("/wager/all")
+    else
+      a_wager.save
+      @finished_bets = Wager.all
+    @finished_bets_list =Array.new
+    @finished_bets.each do |event|
+      if event.result != nil
+        @finished_bets_list.push(event)
+      end
+      
+    end
+     render({ :template => "betting_templates/results.html.erb" })
+  end
      
-      render({ :template => "betting_templates/results.html.erb" })
     
   end
   

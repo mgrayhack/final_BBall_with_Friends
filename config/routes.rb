@@ -6,12 +6,6 @@ Rails.application.routes.draw do
           
 
   
-  # UPDATE
-  
-  post("/modify_standing/:path_id", { :controller => "leaderboard", :action => "update" })
-  
-  # DELETE
-  get("/delete_standing/:path_id", { :controller => "leaderboard", :action => "destroy" })
 
   #------------------------------
 
@@ -67,7 +61,7 @@ Rails.application.routes.draw do
   #post("/insert_game", { :controller => "games", :action => "create" })
           
   # READ
-  #get("/games", { :controller => "games", :action => "index" })
+  get("/games", { :controller => "schedule", :action => "index" })
   
   #get("/games/:path_id", { :controller => "games", :action => "show" })
   
@@ -97,6 +91,12 @@ Rails.application.routes.draw do
    get("/result_wager/:path_id", { :controller => "betting", :action => "result" })
 
 
+  # UPDATE
+  
+  post("/modify_standing/:path_id", { :controller => "leaderboard", :action => "update" })
+  
+  # DELETE
+  get("/delete_standing/:path_id", { :controller => "leaderboard", :action => "destroy" })
  
 
  #post("/user_verify", { :controller => "user_authentication", :action => "start_cookie" })

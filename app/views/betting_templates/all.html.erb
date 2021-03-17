@@ -6,8 +6,8 @@
 </li>
  <li> All bets are final</li>      
 <li> If the game has not started, you may "theoretically " cancel your bet by taking the other side of your own bet but it will count in both your win and loss column</li>   
-<li> The creator of the bet is in charge of inputting the results: 1- If the creator of the bet won the bet, please click yeas
-2- If  </li>   
+<li> The creator of the bet is in charge of inputting the results: <br>1- If the creator of the bet won the bet, please click Yes <br>
+2- If that person loses, click No <br> 3- If it is a tie, click Push and the bet will be eliminated</li>   
 
 
 
@@ -51,11 +51,11 @@
     </td>
     <td>
  <form action="/result_wager/<%=bet.id%>">  
-      </a><input id="browser_input" type="hidden" type="integer" name="winner" value =  "Yes">
+      </a><input id="browser_input" type="hidden" type="integer" name="winner" value =  "Won">
       <button type = "submit"> Yes </button>
       </form>
         <form action="/result_wager/<%=bet.id%>">  
-      </a><input id="browser_input" type="hidden" type="integer" name="winner" value =  "No">
+      </a><input id="browser_input" type="hidden" type="integer" name="winner" value =  Lost">
       <button type = "submit"> No </button>
       </form>
        <form action="/result_wager/<%=bet.id%>">  
