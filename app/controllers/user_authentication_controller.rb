@@ -24,7 +24,7 @@ class UserAuthenticationController < ApplicationController
         redirect_to("/", { :notice => "Signed in successfully." })
       end
     else
-      redirect_to("/user_sign_in", { :alert => "No user with that email address." })
+      redirect_to("/user_sign_in", { :alert => "No user with that email address. Try to Sign Up below." })
     end
   end
 

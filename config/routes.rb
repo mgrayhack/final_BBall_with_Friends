@@ -9,22 +9,6 @@ Rails.application.routes.draw do
 
   #------------------------------
 
-  # Routes for the Wager resource:
-
-  # CREATE
-  #post("/insert_wager", { :controller => "wagers", :action => "create" })
-          
-  # READ
-  #get("/wagers", { :controller => "wagers", :action => "index" })
-  
-  #get("/wagers/:path_id", { :controller => "wagers", :action => "show" })
-  
-  # UPDATE
-  
-  #post("/modify_wager/:path_id", { :controller => "wagers", :action => "update" })
-  
-  # DELETE
-  #get("/delete_wager/:path_id", { :controller => "wagers", :action => "destroy" })
 
   #------------------------------
 
@@ -57,20 +41,15 @@ Rails.application.routes.draw do
 
   # Routes for the Game resource:
 
-  # CREATE
-  #post("/insert_game", { :controller => "games", :action => "create" })
+  
           
   # READ
   get("/games", { :controller => "schedule", :action => "index" })
   
-  #get("/games/:path_id", { :controller => "games", :action => "show" })
+ #user profile within standings
+ get("/users/:path_id", { :controller => "leaderboard", :action => "show" })
   
-  # UPDATE
-  
-  #post("/modify_game/:path_id", { :controller => "games", :action => "update" })
-  
-  # DELETE
-  #get("/delete_game/:path_id", { :controller => "games", :action => "destroy" })
+ 
 
   #------------------------------
 
@@ -78,8 +57,7 @@ Rails.application.routes.draw do
  get("/", { :controller => "user_authentication", :action => "index" })
 #compare recirds
  get("/standings", { :controller => "leaderboard", :action => "index" })
- #user profile within standings
- get("/users/:path_id", { :controller => "leaderboard", :action => "show" })
+ 
 #betting
  get("/wager", { :controller => "betting", :action => "index" })
  get("/wager/insert_bet", { :controller => "betting", :action => "show" })
