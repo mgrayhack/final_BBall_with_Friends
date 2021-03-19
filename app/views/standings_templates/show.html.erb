@@ -78,13 +78,15 @@
     </td>
 
     <td>
-       <% if bet.result == "Yes"%>
-      <%= "Yes"%> 
-    <% elsif bet.result == "No" %>
+      <% if bet.result == nil %>
+      <%= "In Progress"%> 
+    <% elsif bet.result == "Lost" %>
        <%= "No"%> 
+       <% elsif bet.result.to_i == bet.bettor.id %>
+       <%= "Yes"%> 
     <% else%>  
-    <%= "In Progress" %> 
-     <% end %> 
+    <%= "No" %> 
+     <% end %>
     </td>
     
  
@@ -120,12 +122,12 @@
     </td>
 
     <td>
-    <% if bet.result == "Yes"%>
-      <%= "No"%> 
-    <% elsif bet.result == "No" %>
-       <%= "Yes"%> 
+    <% if bet.result == nil %>
+      <%= "In Progress"%> 
+       <% elsif bet.result.to_i == bet.bettor.id %>
+       <%= "No"%> 
     <% else%>  
-    <%= "In Progress" %> 
+    <%= "Yes" %> 
      <% end %>
 
 
